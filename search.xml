@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>c语言学习笔记(一)</title>
+      <link href="/2023/07/17/c%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/"/>
+      <url>/2023/07/17/c%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/</url>
+      
+        <content type="html"><![CDATA[<p>[toc]</p><span id="more"></span><h1 id="c语言">C语言</h1><ul><li><p>由来</p><p>ALGOL（A语言）→ BCPL（B语言）</p><p>世界上第一个c语言编辑器使用B语言写的</p><p>C语言之父：ken thompson Dennis M.Ritchie</p></li><li><p>clion开发 环境</p><p>注意：1.项目存储路径必须全英文</p><p>c++项目 c++ exectuable</p><p>c 项目 c exectuable</p><ul><li><p>环境激活试用</p><p>将激活文件夹拖入窗体中</p><p><a href="https://sales.jetbrains.com/hc/zh-cn/articles/207154369-%E5%AD%A6%E7%94%9F%E5%92%8C%E6%95%99%E5%B8%88%E6%8E%88%E6%9D%83%E7%94%B3%E8%AF%B7%E6%96%B9%E5%BC%8F">学生和教师授权申请方式– 许可和购买常见问题解答 (jetbrains.com)</a></p><p>激活教育版</p><ul><li><p>远程协助软件</p><p>国外 teamview</p><p>国内 向日葵</p></li></ul></li></ul></li><li><p>编译与调试</p><ul><li><p>代码文件</p><p>不同语言以后缀名来区分如.c, .java, .py，但本质上都是文本文件</p></li><li><p>编译</p><p>将人工编写的代码转换机器可以执行的程序（纯二进制码）</p></li><li><p>调试</p><p>左侧红点：打断点</p><p>点击虫子（调试按钮）</p><p>出现蓝色长条，开始调试，从当前这行开始运行（当前行未运行）</p><p>点击折弯箭头运行一步</p><ul><li>步过：当前函数一步一步走 F8</li><li>步入：进入到某个子函数F7（到达某个函数要进入自己的子函数时使用）</li></ul></li></ul></li><li><p>代码格式</p><p>头文件</p><p>#include studio.h</p><p><a href="https://blog.csdn.net/weixin_43491077/article/details/109012061">(16条消息)C语言中头文件中#include“stdlib.h“的作用_#include&lt;stdlib.h&gt;_阿槐123456的博客-CSDN博客</a></p><p>int(函数返回值类型)</p><p>main()主函数名，每个c语言程序只能有一个main，程序从main开始执行</p></li></ul><h3 id="数据类型-常量-变量">数据类型-常量-变量</h3><ul><li><p>数据类型</p><ul><li>基本类型<ul><li>整形 int</li><li>浮点型 float</li><li>字符型 char</li></ul></li><li>构造类型</li><li>指针类型 *</li><li>空类型 void</li></ul></li><li><p>常量</p><p>整形、实型（浮点型）、字符型‘a’、字符串型“abc”</p></li><li><p>变量（整型-浮点-字符）</p><p>在程序执行过程中可以改变</p><ul><li><p>命名：字母、下划线、数字（不能数字开头）</p><p>不能与关键字重名</p><figure><img src="/2023/07/17/c%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/Untitled.png" alt="Untitled"><figcaption aria-hidden="true">Untitled</figcaption></figure></li></ul></li><li><p>符号常量</p><p>定义 #define</p><p>直接替换结果，不能赋值</p><p>PI = 3+2</p><p>PI<em>2 = 3+2</em>2 = 7</p></li><li><p>整型变量</p><p>int i=PI*2（四个字节）</p><p>查看变量大小： sizeof(i)</p></li><li><p>浮点型常量</p><p><a href="https://www.zhihu.com/question/55152080">(24 封私信 / 80条消息) c语言：为什么把整数以%f格式输出是0.000？ - 知乎(zhihu.com)</a></p><p>float f = 3e-3 0.003（四个字节）</p><p>小数形式</p><p>指数形式 3e-3</p><figure><img src="/2023/07/17/c%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/Untitled%201.png" alt="Untitled"><figcaption aria-hidden="true">Untitled</figcaption></figure></li><li><p>字符串常量</p><p>结尾处有’\0’作为结束标志，占n+1个字节</p></li><li><p>混合运算</p><p>强制类型转换</p><p>(float)i</p></li><li><p>内存视图（集成开发环境看内存都用十六进制展示）（每个位置显示一个字节byte）</p><p>英特尔cpu采用小端方式进行数据存储，因此低位在前，高位在后（低位字节在前）</p><p><a href="https://blog.csdn.net/shuxiachai/article/details/127322794">(16条消息)王道C语言督学营OJ题解合集（24考研人持续更新ing）_王道c语言督学营资源-CSDN博客</a></p></li></ul><h3 id="函数">函数</h3><ul><li><p>printf</p><p>%c 以字符形式输出 %d 以整型输出</p><p>%3d 占三个空格的位置</p><p>浮点数%5.2 占五个空格 保留两位小数</p><p>默认右对齐，数字前加- 代表左对齐</p><p><a href="https://blog.csdn.net/qq_29874741/article/details/94626531">(16条消息)c语言printf()输出格式大全_printf输出格式_rusty_knife的博客-CSDN博客</a></p></li><li><p>scanf 读取数据</p><p>读取标准输入（键盘输入）</p><p><a href="https://zhuanlan.zhihu.com/p/436420553">scanf（"%d",&amp;a）回车无法结束输入问题- 知乎 (zhihu.com)</a></p><p>后面不能加</p><p>缓冲区（最多输入4096字节）: 10</p><p>如果剩余， scanf(”%c”,&amp;c)会把“”读走</p><p>解决：fflush（stdin）;清空标准输入缓冲区</p><ul><li>scanf在读取整数%d、浮点数%f、字符串%s时会忽略‘’换行符、回车符等字符，读取字符%c时不会忽略，%c不会忽略任何字符，包括空格（32）</li><li>ret= scanf()代表匹配成功的个数（读取多个值时）问题解决：在%c前加一个空格</li><li>读取字符数组时，不需要取地址（字符数组中存储了地址信息），自动往字符数组中放结束符</li></ul></li><li><p>gets 读取一行（到）</p><p>遇到，不会存储，而是转化为结束符\0</p></li><li><p>puts</p><p>puts(c) 等价于 printf(”%s”,c)，参数只能为字符数组名</p></li><li><p>str系列</p><p>引用#including &lt;string.h&gt;</p><ul><li><p>strlen 获取字符串长度</p></li><li><p>strcopy 将一个数组的字符串复制到前面的数组中</p></li><li><p>strcat 拼接两个数组</p></li><li><p>strcmp 比较两个数组</p><p>相等，返回0不相等，比较大小（按asc码值比较）前大于后返回正值，前小于后返回负值</p></li></ul><p>strcat和strcopy第一个参数要放数组名</p></li></ul><h3 id="运算符">运算符</h3><ul><li><p>短路运算</p><p>i&amp;&amp;表达式当i为假时，不会执行逻辑与后的表达式，成为短路运算</p><p>i || 表达式当i为真时，不会执行逻辑与后的表达式，成为短路运算</p></li></ul><p><a href="https://blog.csdn.net/changexhao/article/details/82556761">(16条消息)C语言运算符优先级列表(超详细)_c语言运算符优先级由高到低的顺序_Vance2016的博客-CSDN博客</a></p><p>左值报错：左侧没有变量lvalue required as left operand ofassignment</p><ul><li>sizeof 是一个运算符，不是函数(求常量或变量所占空间大小）</li></ul><p><a href="https://zhuanlan.zhihu.com/p/30007037#:~:text=%E8%BF%98%E6%98%AF%E7%94%A8%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%B8%A6%E5%87%BA%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%8C%E7%9C%8B%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%8C%E7%90%86%E8%AE%BA%E4%B8%8A%EF%BC%8C32%E4%BD%8D%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8Cint%E5%8D%A04byte%EF%BC%8Cchar%E5%8D%A0%E4%B8%80%E4%B8%AAbyte%EF%BC%8C%E9%82%A3%E4%B9%88%E5%B0%86%E5%AE%83%E4%BB%AC%E6%94%BE%E5%88%B0%E4%B8%80%E4%B8%AA%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E5%BA%94%E8%AF%A5%E5%8D%A04%2B1%3D5byte%EF%BC%9B%E4%BD%86%E6%98%AF%E5%AE%9E%E9%99%85%E4%B8%8A%EF%BC%8C%E9%80%9A%E8%BF%87%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF8,byte%EF%BC%8C%E8%BF%99%E5%B0%B1%E6%98%AF%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E6%89%80%E5%AF%BC%E8%87%B4%E7%9A%84%E3%80%82">C/C++内存对齐详解- 知乎 (zhihu.com)</a></p><ul><li>c语言中单引号‘’只能用来表示单个字符，如果出现多个字符，则编译出错</li><li><a href="https://www.asciim.cn/">ASCII码 -基本ASCII码和扩展ASCII码,最全的ASCII码对照表 (asciim.cn)</a></li></ul><h3 id="数组">数组</h3><ul><li>定义格式： 类型说明符 数组名 [常量表达式]；</li><li>数组内元素类型必须相同</li><li>不能用变量说明数组大小</li><li>可以初始化一部分值，其它为0</li><li>可以不用写元素个数，编译器会自动计算数组大小（不推荐）a[]={1,2,3}</li></ul><p>例：int a[5]</p><ul><li><p>内存的存储</p><p>每个数据元素占用的字节数，就算基础类型的字节数，一个元素占4字节</p></li><li><p>越界访问 access of bounds</p><p>越界访问会造成数据异常，操作系统对内存中每一个位置都给予编号，</p><p>Windows 32位控制台应用程序：0x00 00 00 00 到0xFF FF FFFF，总计为2的32次方，大小为4G，这些编号称为地址</p><p>危险之处：会改变其它变量的值（编译器不会检查）</p></li><li><p>数组的传递</p><ul><li><p>数组名传递到子函数后，子函数形参接收到是数组的起始地址，因此不能通过sizeof获得数组长度传递给子函数（弱化为了指针—大小为8字节）（只能自己定义一个变量传递数组长度）</p></li><li><p>传递时后面不用写数字，没有意义，不会传递过去</p></li></ul></li><li><p>字符数组</p><ul><li>初始化</li></ul><p>char c[10]={’I’,’b’,’c’,……}</p><p>char c[10] = “Iamhappy”使用这种方式初始化（实际为9个字符，最后一个用来存储‘\0’）</p><p>char c[6] = “happy”</p><p>printf(”%s”,c)直接输出字符串（如果是c[5]，没有结束符，则后面会输出乱码）</p><p>结束符\0的值为零（可以作为判断条件）</p></li></ul><h1 id="gets和puts函数">gets和puts函数</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">char</span> c[<span class="number">20</span>];</span><br><span class="line">    gets(c);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>补码乘法的证明</title>
+      <link href="/2023/07/15/%E8%A1%A5%E7%A0%81%E4%B9%98%E6%B3%95%E7%9A%84%E8%AF%81%E6%98%8E/"/>
+      <url>/2023/07/15/%E8%A1%A5%E7%A0%81%E4%B9%98%E6%B3%95%E7%9A%84%E8%AF%81%E6%98%8E/</url>
+      
+        <content type="html"><![CDATA[<h1 id="补码乘法的证明">补码乘法的证明</h1><p>在刚开始学计算机组成的时候，因为不明白补码乘法规则的原理，网上找了很多说明的文章才搞明白，所以这里总结一下。<span id="more"></span></p><h2 id="booth算法">Booth算法</h2><p>首先要了解一下模的概念，“模”实质上是计量器产生“溢出”的量,它的值在计量器上表示不出来,计量器上只能表示出模的余数.任何有模的计量器,均可化减法为加法运算。</p><p>例如：时种的范围为1~12，那么它的模就等于12，如果我们要计算<span class="math inline">\(9-4\)</span>，即 <span class="math inline">\(9+(-4)\)</span>,就可以将-4替换为它的的补数8来实现（如果两个数绝对值之和等于模，则这两个数互为补数），<span class="math inline">\(9+8=17\)</span>，而超出模的部分机器会自动减去模加以修正，和时钟超出一圈后从原点开始原理相同，因此<span class="math inline">\(17 = 5（mod\12）\)</span>，利用加法实现了减法运算，补码原理相同，补码就是在原码真值基础上加模<span class="math inline">\(2^{n}\)</span>产生（n代表位数）。</p><p>首先设小数 <span class="math inline">\([x]_补 =x_0.x_1x_2x_3…x_n\)</span>，设<span class="math inline">\(x\)</span>为真值，此时模为2<strong>如果x为正数</strong>：则x = <span class="math inline">\(\sum_{i=1}^nx_i2^{-i}\)</span><strong>如果x为负数</strong>：则在这里 <span class="math inline">\([x]_补\)</span>的十进制数值（不是真值，真值是需要考虑符号位的）等于 <span class="math inline">\(x+2\)</span> 而<span class="math inline">\([x]_补\)</span>的真值还可以写成<span class="math inline">\(x_0+\sum_{i=1}^nx_i2^{-i}\)</span> <span class="math display">\[ 1+\sum_{i=1}^nx_i2^{-i} = x+2 \\x = -1 +\sum_{i=1}^nx_i2^{-i} \]</span></p><p>正数时可以写成<span class="math inline">\(-0+\sum_{i=1}^nx_i2^{-i}\)</span>，总结两种情况x的真值可以写成<span class="math inline">\(-x_0+\sum_{i=1}^nx_i2^{-i}\)</span>(注意这只是一个规律的总结，不是严格意义上的证明)</p><p>利用这个规律我们可以计算<span class="math inline">\([x\timesy]_补\)</span>,设 <span class="math inline">\([y]_补 =y_0.y_1y_2y_3…y_n\)</span>，</p><p><strong>当y&gt;0时，</strong><span class="math display">\[[x\timesy]_补 = [x\times \sum_{i=1}^ny_i2^{-i}]_补 \\= [x]_补 \times \sum_{i=1}^ny_i2^{-i} \]</span><strong>当y&lt;0时，</strong> y的真值为 <span class="math inline">\(\sum_{i=1}^ny_i2^{-i} - 1\)</span></p><p><span class="math display">\[[x\times y]_补 = [x\times(\sum_{i=1}^ny_i2^{-i}-1)]_补 \\= [x]_补 \times \sum_{i=1}^ny_i2^{-i}  - [x]_补 \]</span></p><p>同样总结规律可得：</p><p><span class="math display">\[[x\times y]_补   = [x]_补 \times\sum_{i=1}^ny_i2^{-i} - y_0[x]补 \]</span></p><p>这个式子可以展开一下： <span class="math display">\[[x\times y]_补   = [x]_补 \times （y_12^{-1} + y_2{-2}^2+ … +y_n2^{-n}）- y_0[x]补\]</span> 这一步是关键，将各个2的幂展开，再重新归类项 <span class="math display">\[\begin{aligned}&amp;= [x]_补 \times [ - y_0 + y_1(1 - 2^{-1}) + y_2(2^{-1}- 2^{-2})+ …+y_n(2^{-(n-1)} - 2^{-n})] \\&amp;= [x]_补 \times [(y_1 - y_0) + 2^{-1}(y_2-y_1) +  … +2^{-(n-1)}(y_n-y_{n-1})+2^{-n}(y_{n+1}-y_n)]\\&amp;(设y_{n+1}=0)\end{aligned}\]</span>上面的每一项我理解为乘算后每一位的大小，也就可知部分积（乘以<span class="math inline">\(2^{-1}\)</span>相当于右移一位）</p><p><span class="math display">\[ \begin{aligned}z_0 &amp;= 0\\z_1 &amp;= 2^{-1}[z_0 + [x]_补 \times (y_{n+1}-y_n)]\\…\\z_{n+1}&amp; = z_{n-1} + [x]_补 \times(y_{1}-y_0)\end{aligned}\]</span></p><p>因此根据补码两位之差就可以确定是 <span class="math inline">\(+[x]_补\)</span> 、 <span class="math inline">\(-[x]_补\)</span> 还是 <span class="math inline">\(+0\)</span> 了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 计组 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>markdown基础语法</title>
+      <link href="/2023/07/14/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"/>
+      <url>/2023/07/14/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="markdown基础语法">markdown基础语法</h1><span id="more"></span><h2 id="一块级元素">一、块级元素</h2><h3 id="标题">1. 标题：</h3><p>标题前打 # 号加空格，标题和world里的标题类似，采用六级标题</p><h1 id="一级">一级</h1><h2 id="二级">二级</h2><h3 id="三级">三级</h3><h4 id="四级">四级</h4><h5 id="五级">五级</h5><h6 id="六级">六级</h6><p class="heading" id="七级没有了">七级、没有了</p><h3 id="引用">2.引用</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是一段引用</span><br></pre></td></tr></table></figure><blockquote><p>这是一段引用</p></blockquote><h3 id="有序列表和无序列表">3.有序列表和无序列表</h3><p>有序列表： 1. 第一步 2. 第二步 1. 二级列表（tab键实现） 1. 三级列表3. ……</p><p>无序列表（使用 - 、 + 或 * ） <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> 春</span><br><span class="line"><span class="bullet">+</span> 夏</span><br><span class="line"><span class="bullet">*</span> 秋</span><br><span class="line"><span class="bullet">-</span> 冬</span><br></pre></td></tr></table></figure> - 春 - 夏 - 秋 - 冬</p><h3 id="to-do-list">4.to-do list</h3><p>一个负号+空格+方括号+空格，注意方括号前后和里面都要加空格。可以写成<code>[x]</code>表示完成- [x] 学习 - [ ] 吃饭 - [ ] 睡觉</p><h3 id="代码块">5.代码块</h3><p>三个波浪号（~）后加语言名称，如c、python，代码结束再以三个 ~ 结尾。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ### 6.高亮 内容前后加两个等于号 ==哈哈哈==</p><h3 id="数学函数">7.数学函数</h3><p><span class="math display">\[\frac{\partial f}{\partial x} = 2\sqrt{a}x\]</span></p><h1 id="二markdown快捷键">二、markdown快捷键</h1><ul><li>ctrl+b 加粗</li><li>ctrl+i 变斜体</li><li>ctrl+m 公式起止符</li></ul><p><a href="https://zhuanlan.zhihu.com/p/142988176">为什么写博客都用markdown</a></p><p><img src="/2023/07/14/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/QQ图片20220627104509.gif"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我的第一个blog：hexo建站遇到的一些问题</title>
+      <link href="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+      <url>/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<span id="more"></span><h1 id="网站搭建">1. 网站搭建</h1><h2 id="博客预览卡片">1.1. 博客预览卡片</h2><p>刚开始写博客整篇内容都在首页上，找了半天才发现原来是少了这行代码</p><figure><img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-14-22-58-33.png" alt="2023-07-14-22-58-33.png"><figcaption aria-hidden="true">2023-07-14-22-58-33.png</figcaption></figure><p>代码前面的内容会出现在预览卡片上，后面的内容点进去才可以看到</p><h2 id="hexo插入图片无效">1.2. hexo插入图片无效</h2><p>markdown中添加图片后，hexo加载不出来，搜索了一下需要安装hexo-asset-image插件，结果应该是过时了，还是没有成功加载，后来在知乎上一位大佬提供了解决方法。</p><p>https://zhuanlan.zhihu.com/p/280758822 &gt;-修改_config.yml中的post_asset_folder: true &gt;-<code>$ npm install hexo-image-link --save</code> &gt;- 如果npm下载比较慢的话，尝试 cnpm下载 &gt; -<code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code>&gt; - <code>$ cnpm install hexo-image-link --save</code> &gt;-修改md文件中的图片路径</p><p>问题终于解决。</p><h1 id="写博客">2. 写博客</h1><h2 id="vscode直接粘贴图片到对应文件夹下">2.1.vscode直接粘贴图片到对应文件夹下</h2><p>首先安装插件paste image <img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-14-23-18-33.png" alt="2023-07-14-23-18-33.png"></p><p>如果我们想要设置只在当前工作区生效，就在当前博客文件夹下建立<code>.vscode</code>文件夹，在刚创立的文件夹中创建<code>settings.json</code>文件，然后添加代码，当然也可以在全局设置中修改。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;pasteImage.path&quot;</span>: <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.basePath&quot;</span>: <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.prefix&quot;</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.insertPattern&quot;</span>: <span class="string">&quot;![$&#123;imageFileName&#125;]($&#123;currentFileNameWithoutExt&#125;$&#123;imageFilePath&#125;$&#123;imageSyntaxSuffix&#125;&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样我们按ctrl+alt+v（注意不是ctrl+v）就可以直接将图片拷贝到对应文件夹中啦。</p><h2 id="hexo渲染代码段不换行">2.2. hexo渲染代码段不换行</h2><p><img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-15-10-40-24.png" alt="2023-07-15-10-40-24.png"> 待解决</p><h2 id="主题配置">2.3. 主题配置</h2><p><a href="https://blog.csdn.net/qq_53517370/article/details/128911597">particlex主题配置</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> vscode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>nodejs小记</title>
+      <link href="/2023/07/14/nodejs/"/>
+      <url>/2023/07/14/nodejs/</url>
+      
+        <content type="html"><![CDATA[<h1 id="node.js">node.js</h1><span id="more"></span><blockquote><p>nodejs是一款应用程序，是一款软件，可以运行javascrip</p></blockquote><p>服务器：保存html、css、javascript</p><p>nodejs：运行在服务器端，处理用户的请求</p><p>作用：</p><ul><li>开发服务器应用</li><li>开发工具类应用：（基于nodejs）webpack vite babel</li><li>桌面端应用：nodejs——electron——vscode、figma、postman</li></ul><p>下载：LTS（long term support ）长期支持</p><p><a href="https://nodejs.cn/download/">下载 | Node.js 中文网(nodejs.cn)</a></p><p>所有版本：<a href="https://registry.npmmirror.com/binary.html?path=node/">CNPMBinaries Mirror (npmmirror.com)</a></p><h2 id="命令提示符">1.命令提示符</h2><p>切换盘符：C: D:</p><p>切换工作目录 cd</p><p>查看目录文件 dir 查看目录下所有文件 dir /s</p><p>结束输出 ctrl+c</p><p>方向键上下键：调出命令历史</p><p>tab键：补全目录文件名称</p><p>注意点：Node.js中不能使用BOM和DOM的API</p><p>可以使用：console和定时器</p><p>顶级对象：global （在浏览器中是window）</p><p>globalThis 指向顶级对象 等同于global</p><h2 id="buffer">2.Buffer</h2><p>是一段固定长度的内存空间，用于处理二进制数据</p><blockquote><ol type="1"><li>大小固定</li><li>性能较好，可以直接操作计算机内存</li><li>每个元素大小为1字节</li></ol></blockquote><p>创建：</p><p>Buffer.alloc(10)</p><p>Buffer.allocUnsafe(10) 创建时不会清除原先的数据，因此速度更快</p><p>Buffer.from() 从数组、字符串创建buffer</p><p>buf.toString() toString(2) 进制转换</p><p>溢出：舍弃高位数据</p><p>中文：一个utf-8的中文占3个字节</p><h2 id="fs模块file-system-文件系统">3.fs模块（file system文件系统）</h2><h3 id="导入fs模块">3.1. 导入fs模块</h3><p>const fs = require(’fs’)</p><p>fs.writeFile</p><h3 id="文件读写">3.2. 文件读写</h3><p>异步工作模式：先顺序执行代码（主线程：解析js代码IO线程：写入文件，写入结束后将回调函数压入到队列中）</p><p>同步写入 fs.writeFileSync(’’,’’test’)</p><p>追加写入 fs.appendFile()</p><p>流式写入 const ws = fs.createWriteStream(文件名)</p><p>ws.write(内容)</p><p>流式读出 const rs = fs.createReadStream()</p><p>rs.on(’data’, chunk ⇒{})</p><p>rs.on(’end’, {回调函数}）</p><h3 id="文件重命名与移动">3.3. 文件重命名与移动</h3><p>fs.rename(旧路径， 新路径， 回调函数）</p><h3 id="文件删除-fs.rm-fs.unlink">3.4. 文件删除 fs.rm fs.unlink</h3><h3 id="文件夹操作">3.5. 文件夹操作</h3><figure><img src="/2023/07/14/nodejs/Untitled.png" alt="文件夹操作"><figcaption aria-hidden="true">文件夹操作</figcaption></figure><h3 id="查看文件状态">3.6. 查看文件状态</h3><p>fs.stat(文件名，{ .isFile() 是否为文件 .isDirectory()是否为文件夹})</p><h3 id="相对路径">3.7. 相对路径</h3><p><strong>是以命令行的工作目录为基准，dirname保存了当前文件所在目录的绝对路径（可以避免工作目录变化导致程序错误）filename(当前文件的绝对路径）</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> nodejs </tag>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>link</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>標籤</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+  
+</search>
