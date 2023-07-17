@@ -55,27 +55,6 @@
     
     
     <entry>
-      <title>我的第一个blog：hexo建站遇到的一些问题</title>
-      <link href="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-      <url>/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-      
-        <content type="html"><![CDATA[<span id="more"></span><h1 id="网站搭建">1. 网站搭建</h1><h2 id="博客预览卡片">1.1. 博客预览卡片</h2><p>刚开始写博客整篇内容都在首页上，找了半天才发现原来是少了这行代码</p><figure><img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-14-22-58-33.png" alt="2023-07-14-22-58-33.png"><figcaption aria-hidden="true">2023-07-14-22-58-33.png</figcaption></figure><p>代码前面的内容会出现在预览卡片上，后面的内容点进去才可以看到</p><h2 id="hexo插入图片无效">1.2. hexo插入图片无效</h2><p>markdown中添加图片后，hexo加载不出来，搜索了一下需要安装hexo-asset-image插件，结果应该是过时了，还是没有成功加载，后来在知乎上一位大佬提供了解决方法。</p><p>https://zhuanlan.zhihu.com/p/280758822 &gt;-修改_config.yml中的post_asset_folder: true &gt;-<code>$ npm install hexo-image-link --save</code> &gt;- 如果npm下载比较慢的话，尝试 cnpm下载 &gt; -<code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code>&gt; - <code>$ cnpm install hexo-image-link --save</code> &gt;-修改md文件中的图片路径</p><p>问题终于解决。</p><h1 id="写博客">2. 写博客</h1><h2 id="vscode直接粘贴图片到对应文件夹下">2.1.vscode直接粘贴图片到对应文件夹下</h2><p>首先安装插件paste image <img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-14-23-18-33.png" alt="2023-07-14-23-18-33.png"></p><p>如果我们想要设置只在当前工作区生效，就在当前博客文件夹下建立<code>.vscode</code>文件夹，在刚创立的文件夹中创建<code>settings.json</code>文件，然后添加代码，当然也可以在全局设置中修改。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;pasteImage.path&quot;</span>: <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.basePath&quot;</span>: <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.prefix&quot;</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.insertPattern&quot;</span>: <span class="string">&quot;![$&#123;imageFileName&#125;]($&#123;currentFileNameWithoutExt&#125;$&#123;imageFilePath&#125;$&#123;imageSyntaxSuffix&#125;&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样我们按ctrl+alt+v（注意不是ctrl+v）就可以直接将图片拷贝到对应文件夹中啦。</p><h2 id="hexo渲染代码段不换行">2.2. hexo渲染代码段不换行</h2><p><img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-15-10-40-24.png" alt="2023-07-15-10-40-24.png"> 待解决</p><h2 id="主题配置">2.3. 主题配置</h2><p><a href="https://blog.csdn.net/qq_53517370/article/details/128911597">particlex主题配置</a></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-            <tag> vscode </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>nodejs小记</title>
       <link href="/2023/07/14/nodejs/"/>
       <url>/2023/07/14/nodejs/</url>
@@ -89,6 +68,27 @@
             <tag> nodejs </tag>
             
             <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我的第一个blog：hexo建站遇到的一些问题</title>
+      <link href="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+      <url>/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
+      
+        <content type="html"><![CDATA[<span id="more"></span><h1 id="网站搭建">1. 网站搭建</h1><h2 id="博客预览卡片">1.1. 博客预览卡片</h2><p>刚开始写博客整篇内容都在首页上，找了半天才发现原来是少了这行代码</p><figure><img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-14-22-58-33.png" alt="2023-07-14-22-58-33.png"><figcaption aria-hidden="true">2023-07-14-22-58-33.png</figcaption></figure><p>代码前面的内容会出现在预览卡片上，后面的内容点进去才可以看到</p><h2 id="hexo插入图片无效">1.2. hexo插入图片无效</h2><p>markdown中添加图片后，hexo加载不出来，搜索了一下需要安装hexo-asset-image插件，结果应该是过时了，还是没有成功加载，后来在知乎上一位大佬提供了解决方法。</p><p>https://zhuanlan.zhihu.com/p/280758822 &gt;-修改_config.yml中的post_asset_folder: true &gt;-<code>$ npm install hexo-image-link --save</code> &gt;- 如果npm下载比较慢的话，尝试 cnpm下载 &gt; -<code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code>&gt; - <code>$ cnpm install hexo-image-link --save</code> &gt;-修改md文件中的图片路径</p><p>问题终于解决。</p><h1 id="写博客">2. 写博客</h1><h2 id="vscode直接粘贴图片到对应文件夹下">2.1.vscode直接粘贴图片到对应文件夹下</h2><p>首先安装插件paste image <img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-14-23-18-33.png" alt="2023-07-14-23-18-33.png"></p><p>如果我们想要设置只在当前工作区生效，就在当前博客文件夹下建立<code>.vscode</code>文件夹，在刚创立的文件夹中创建<code>settings.json</code>文件，然后添加代码，当然也可以在全局设置中修改。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;pasteImage.path&quot;</span>: <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.basePath&quot;</span>: <span class="string">&quot;$&#123;currentFileDir&#125;/$&#123;currentFileNameWithoutExt&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.prefix&quot;</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pasteImage.insertPattern&quot;</span>: <span class="string">&quot;![$&#123;imageFileName&#125;]($&#123;currentFileNameWithoutExt&#125;$&#123;imageFilePath&#125;$&#123;imageSyntaxSuffix&#125;&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样我们按ctrl+alt+v（注意不是ctrl+v）就可以直接将图片拷贝到对应文件夹中啦。</p><h2 id="hexo渲染代码段不换行">2.2. hexo渲染代码段不换行</h2><p><img src="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/2023-07-15-10-40-24.png" alt="2023-07-15-10-40-24.png"> 待解决</p><h2 id="主题配置">2.3. 主题配置</h2><p><a href="https://blog.csdn.net/qq_53517370/article/details/128911597">particlex主题配置</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> vscode </tag>
             
         </tags>
       
@@ -111,9 +111,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>標籤</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -122,9 +122,9 @@
     
     
     <entry>
-      <title>標籤</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
