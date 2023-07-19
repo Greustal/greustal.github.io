@@ -81,27 +81,6 @@
     
     
     <entry>
-      <title>nodejs小记</title>
-      <link href="/2023/07/14/nodejs/"/>
-      <url>/2023/07/14/nodejs/</url>
-      
-        <content type="html"><![CDATA[<h1 id="node.js">node.js</h1><span id="more"></span><blockquote><p>nodejs是一款应用程序，是一款软件，可以运行javascrip</p></blockquote><p>服务器：保存html、css、javascript</p><p>nodejs：运行在服务器端，处理用户的请求</p><p>作用：</p><ul><li>开发服务器应用</li><li>开发工具类应用：（基于nodejs）webpack vite babel</li><li>桌面端应用：nodejs——electron——vscode、figma、postman</li></ul><p>下载：LTS（long term support ）长期支持</p><p><a href="https://nodejs.cn/download/">下载 | Node.js 中文网(nodejs.cn)</a></p><p>所有版本：<a href="https://registry.npmmirror.com/binary.html?path=node/">CNPMBinaries Mirror (npmmirror.com)</a></p><h2 id="命令提示符">1.命令提示符</h2><p>切换盘符：C: D:</p><p>切换工作目录 cd</p><p>查看目录文件 dir 查看目录下所有文件 dir /s</p><p>结束输出 ctrl+c</p><p>方向键上下键：调出命令历史</p><p>tab键：补全目录文件名称</p><p>注意点：Node.js中不能使用BOM和DOM的API</p><p>可以使用：console和定时器</p><p>顶级对象：global （在浏览器中是window）</p><p>globalThis 指向顶级对象 等同于global</p><h2 id="buffer">2.Buffer</h2><p>是一段固定长度的内存空间，用于处理二进制数据</p><blockquote><ol type="1"><li>大小固定</li><li>性能较好，可以直接操作计算机内存</li><li>每个元素大小为1字节</li></ol></blockquote><p>创建：</p><p>Buffer.alloc(10)</p><p>Buffer.allocUnsafe(10) 创建时不会清除原先的数据，因此速度更快</p><p>Buffer.from() 从数组、字符串创建buffer</p><p>buf.toString() toString(2) 进制转换</p><p>溢出：舍弃高位数据</p><p>中文：一个utf-8的中文占3个字节</p><h2 id="fs模块file-system-文件系统">3.fs模块（file system文件系统）</h2><h3 id="导入fs模块">3.1. 导入fs模块</h3><p>const fs = require(’fs’)</p><p>fs.writeFile</p><h3 id="文件读写">3.2. 文件读写</h3><p>异步工作模式：先顺序执行代码（主线程：解析js代码IO线程：写入文件，写入结束后将回调函数压入到队列中）</p><p>同步写入 fs.writeFileSync(’’,’’test’)</p><p>追加写入 fs.appendFile()</p><p>流式写入 const ws = fs.createWriteStream(文件名)</p><p>ws.write(内容)</p><p>流式读出 const rs = fs.createReadStream()</p><p>rs.on(’data’, chunk ⇒{})</p><p>rs.on(’end’, {回调函数}）</p><h3 id="文件重命名与移动">3.3. 文件重命名与移动</h3><p>fs.rename(旧路径， 新路径， 回调函数）</p><h3 id="文件删除-fs.rm-fs.unlink">3.4. 文件删除 fs.rm fs.unlink</h3><h3 id="文件夹操作">3.5. 文件夹操作</h3><figure><img src="/2023/07/14/nodejs/Untitled.png" alt="文件夹操作"><figcaption aria-hidden="true">文件夹操作</figcaption></figure><h3 id="查看文件状态">3.6. 查看文件状态</h3><p>fs.stat(文件名，{ .isFile() 是否为文件 .isDirectory()是否为文件夹})</p><h3 id="相对路径">3.7. 相对路径</h3><p><strong>是以命令行的工作目录为基准，dirname保存了当前文件所在目录的绝对路径（可以避免工作目录变化导致程序错误）filename(当前文件的绝对路径）</strong></p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> nodejs </tag>
-            
-            <tag> 前端 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>我的第一个blog：hexo建站遇到的一些问题</title>
       <link href="/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
       <url>/2023/07/14/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
@@ -115,6 +94,27 @@
             <tag> hexo </tag>
             
             <tag> vscode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>nodejs小记</title>
+      <link href="/2023/07/14/nodejs/"/>
+      <url>/2023/07/14/nodejs/</url>
+      
+        <content type="html"><![CDATA[<h1 id="node.js">node.js</h1><span id="more"></span><blockquote><p>nodejs是一款应用程序，是一款软件，可以运行javascrip</p></blockquote><p>服务器：保存html、css、javascript</p><p>nodejs：运行在服务器端，处理用户的请求</p><p>作用：</p><ul><li>开发服务器应用</li><li>开发工具类应用：（基于nodejs）webpack vite babel</li><li>桌面端应用：nodejs——electron——vscode、figma、postman</li></ul><p>下载：LTS（long term support ）长期支持</p><p><a href="https://nodejs.cn/download/">下载 | Node.js 中文网(nodejs.cn)</a></p><p>所有版本：<a href="https://registry.npmmirror.com/binary.html?path=node/">CNPMBinaries Mirror (npmmirror.com)</a></p><h2 id="命令提示符">1.命令提示符</h2><p>切换盘符：C: D:</p><p>切换工作目录 cd</p><p>查看目录文件 dir 查看目录下所有文件 dir /s</p><p>结束输出 ctrl+c</p><p>方向键上下键：调出命令历史</p><p>tab键：补全目录文件名称</p><p>注意点：Node.js中不能使用BOM和DOM的API</p><p>可以使用：console和定时器</p><p>顶级对象：global （在浏览器中是window）</p><p>globalThis 指向顶级对象 等同于global</p><h2 id="buffer">2.Buffer</h2><p>是一段固定长度的内存空间，用于处理二进制数据</p><blockquote><ol type="1"><li>大小固定</li><li>性能较好，可以直接操作计算机内存</li><li>每个元素大小为1字节</li></ol></blockquote><p>创建：</p><p>Buffer.alloc(10)</p><p>Buffer.allocUnsafe(10) 创建时不会清除原先的数据，因此速度更快</p><p>Buffer.from() 从数组、字符串创建buffer</p><p>buf.toString() toString(2) 进制转换</p><p>溢出：舍弃高位数据</p><p>中文：一个utf-8的中文占3个字节</p><h2 id="fs模块file-system-文件系统">3.fs模块（file system文件系统）</h2><h3 id="导入fs模块">3.1. 导入fs模块</h3><p>const fs = require(’fs’)</p><p>fs.writeFile</p><h3 id="文件读写">3.2. 文件读写</h3><p>异步工作模式：先顺序执行代码（主线程：解析js代码IO线程：写入文件，写入结束后将回调函数压入到队列中）</p><p>同步写入 fs.writeFileSync(’’,’’test’)</p><p>追加写入 fs.appendFile()</p><p>流式写入 const ws = fs.createWriteStream(文件名)</p><p>ws.write(内容)</p><p>流式读出 const rs = fs.createReadStream()</p><p>rs.on(’data’, chunk ⇒{})</p><p>rs.on(’end’, {回调函数}）</p><h3 id="文件重命名与移动">3.3. 文件重命名与移动</h3><p>fs.rename(旧路径， 新路径， 回调函数）</p><h3 id="文件删除-fs.rm-fs.unlink">3.4. 文件删除 fs.rm fs.unlink</h3><h3 id="文件夹操作">3.5. 文件夹操作</h3><figure><img src="/2023/07/14/nodejs/Untitled.png" alt="文件夹操作"><figcaption aria-hidden="true">文件夹操作</figcaption></figure><h3 id="查看文件状态">3.6. 查看文件状态</h3><p>fs.stat(文件名，{ .isFile() 是否为文件 .isDirectory()是否为文件夹})</p><h3 id="相对路径">3.7. 相对路径</h3><p><strong>是以命令行的工作目录为基准，dirname保存了当前文件所在目录的绝对路径（可以避免工作目录变化导致程序错误）filename(当前文件的绝对路径）</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> nodejs </tag>
+            
+            <tag> 前端 </tag>
             
         </tags>
       
