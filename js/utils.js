@@ -305,3 +305,161 @@ const btf = {
     }
   }
 }
+
+var anzhiyu = {
+  // 音乐节目切换背景
+  changeMusicBg: function (isChangeBg = true) {
+    if (window.location.pathname != "/music/") {
+      return;
+    }
+    const anMusicBg = document.getElementById("an_music_bg");
+
+    if (isChangeBg) {
+      // player listswitch 会进入此处
+      const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+      anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+    } else {
+      // 第一次进入，绑定事件，改背景
+      let timer = setInterval(() => {
+        const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+        // 确保player加载完成
+        console.info(anMusicBg);
+        if (musiccover) {
+          clearInterval(timer);
+          anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
+          // 绑定事件
+          anzhiyu.addEventListenerChangeMusicBg();
+
+          // 暂停nav的音乐
+          if (
+            document.querySelector("#nav-music meting-js").aplayer &&
+            !document.querySelector("#nav-music meting-js").aplayer.audio.paused
+          ) {
+            anzhiyu.musicToggle();
+          }
+        }
+      }, 100);
+    }
+  },
+  addEventListenerChangeMusicBg: function () {
+    const anMusicPage = document.getElementById("anMusic-page");
+    const aplayerIconMenu = anMusicPage.querySelector(".aplayer-info .aplayer-time .aplayer-icon-menu");
+
+    anMusicPage.querySelector("meting-js").aplayer.on("loadeddata", function () {
+      anzhiyu.changeMusicBg();
+      console.info("player loadeddata");
+    });
+
+    aplayerIconMenu.addEventListener("click", function () {
+      document.getElementById("menu-mask").style.display = "block";
+      document.getElementById("menu-mask").style.animation = "0.5s ease 0s 1 normal none running to_show";
+    });
+
+    document.getElementById("menu-mask").addEventListener("click", function () {
+      if (window.location.pathname != "/music/") return;
+      anMusicPage.querySelector(".aplayer-list").classList.remove("aplayer-list-hide");
+    });
+  },
+  //初始化即刻
+  initIndexEssay: function () {
+    if (!document.getElementById("bbTimeList")) return;
+    setTimeout(() => {
+      let essay_bar_swiper = new Swiper(".essay_bar_swiper_container", {
+        passiveListeners: true,
+        direction: "vertical",
+        loop: true,
+        autoplay: {
+          disableOnInteraction: true,
+          delay: 3000,
+        },
+        mousewheel: true,
+      });
+
+      let essay_bar_comtainer = document.getElementById("bbtalk");
+      if (essay_bar_comtainer !== null) {
+        essay_bar_comtainer.onmouseenter = function () {
+          essay_bar_swiper.autoplay.stop();
+        };
+        essay_bar_comtainer.onmouseleave = function () {
+          essay_bar_swiper.autoplay.start();
+        };
+      }
+    }, 100);
+  },
+  //刷新瀑布流
+  reflashEssayWaterFall: function () {
+    const waterfallEl = document.getElementById("waterfall");
+    if (waterfallEl) {
+      setTimeout(function () {
+        waterfall(waterfallEl);
+        waterfallEl.classList.add("show");
+      }, 800);
+    }
+  },
+  // 修改body的type类型以适配css
+  setValueToBodyType: function () {
+    const input = document.getElementById("page-type"); // 获取input元素
+    const value = input.value; // 获取input的value值
+    document.body.dataset.type = value; // 将value值赋值到body的type属性上
+  },
+  // 修改时间显示"最近"
+  diffDate: function (d, more = false, simple = false) {
+    const dateNow = new Date();
+    const datePost = new Date(d);
+    const dateDiff = dateNow.getTime() - datePost.getTime();
+    const minute = 1000 * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+    const month = day * 30;
+
+    let result;
+    if (more) {
+      const monthCount = dateDiff / month;
+      const dayCount = dateDiff / day;
+      const hourCount = dateDiff / hour;
+      const minuteCount = dateDiff / minute;
+
+      if (monthCount >= 1) {
+        result = datePost.toLocaleDateString().replace(/\//g, "-");
+      } else if (dayCount >= 1) {
+        result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
+      } else if (hourCount >= 1) {
+        result = parseInt(hourCount) + " " + GLOBAL_CONFIG.date_suffix.hour;
+      } else if (minuteCount >= 1) {
+        result = parseInt(minuteCount) + " " + GLOBAL_CONFIG.date_suffix.min;
+      } else {
+        result = GLOBAL_CONFIG.date_suffix.just;
+      }
+    } else if (simple) {
+      const monthCount = dateDiff / month;
+      const dayCount = dateDiff / day;
+      const hourCount = dateDiff / hour;
+      const minuteCount = dateDiff / minute;
+      if (monthCount >= 1) {
+        result = datePost.toLocaleDateString().replace(/\//g, "-");
+      } else if (dayCount >= 1 && dayCount <= 3) {
+        result = parseInt(dayCount) + " " + GLOBAL_CONFIG.date_suffix.day;
+      } else if (dayCount > 3) {
+        result = datePost.getMonth() + 1 + "/" + datePost.getDate();
+      } else if (hourCount >= 1) {
+        result = parseInt(hourCount) + " " + GLOBAL_CONFIG.date_suffix.hour;
+      } else if (minuteCount >= 1) {
+        result = parseInt(minuteCount) + " " + GLOBAL_CONFIG.date_suffix.min;
+      } else {
+        result = GLOBAL_CONFIG.date_suffix.just;
+      }
+    } else {
+      result = parseInt(dateDiff / day);
+    }
+    return result;
+  },
+  // 修改即刻中的时间显示
+  changeTimeInEssay: function () {
+    document.querySelector("#bber") &&
+      document.querySelectorAll("#bber time").forEach(function (e) {
+        var t = e,
+          datetime = t.getAttribute("datetime");
+        (t.innerText = anzhiyu.diffDate(datetime, true)), (t.style.display = "inline");
+      });
+  },
+};
